@@ -68,6 +68,7 @@ main {
 .user-id > a {
   color: #fefffe;
   font-weight: bold;
+  text-decoration: none;
 }
 
 .user-id > a:hover {
@@ -139,4 +140,16 @@ header {
 .user-nav li:nth-child(1) {
   border-bottom: 3px solid #1ED760;
   width: 100%;
+}
+
+.home-page-btn {
+  position: fixed;
+  top: 10px;
+  left: 1em;
+  color: #fefffe;
+  text-decoration: none;
+  font-weight: bold;
+  background-color: #1C821F;
+  padding: 0.5em 2em;
+  border-radius: 9999px;
 }

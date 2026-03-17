@@ -4,17 +4,25 @@
     <title>Noite</title>
     <link rel="stylesheet" th:href="@{css/index.css}" />
     <script th:src="@{js/index.js}"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   </head>
   <body>
     <a th:href="@{/}" class="home-page-btn">Página inicial</a>
     <main>
       <div class="posts-container">
+        <form action="#" th:action="@{/}" method=post th:object="${post}">
+          <div class="icon-textarea">
+            <img th:src="@{img/icon.jpg}" class="user-icon-form" alt="" />
+            <textarea th:field="*{content}" placeholder="O que você está planejando hoje?"></textarea>
+          </div>
+          <button>Postar</button>
+        </form>
         <div class="single-post">
           <img th:src="@{img/icon.jpg}" class="user-icon" alt="" />
           <div class="text-side">
             <div class="user-id">
-              <a th:href="@{/user}">Scrypt</a>
-              <span class="user-handle">@flipthescrypt</span>
+              <a th:href="@{/user}">Doglas</a>
+              <span class="user-handle">@littlecat</span>
             </div>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione,

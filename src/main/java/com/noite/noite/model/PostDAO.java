@@ -1,5 +1,7 @@
 package com.noite.noite.model;
 
+import java.util.ArrayList;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +31,15 @@ public class PostDAO {
         obj[0] = post.getContent();
 
         jdbc.update(sql, obj);
+    }
+
+    public Post showPost(String uuid) {
+        String sql = "SELECT * FROM POST WHERE ID=?::uuid";
+        return Post.convert(jdbc.queryForMap(sql, uuid));
+    }
+
+    public ArrayList<Post> listPosts() {
+        String sql = "SELECT * FROM POST";
+        return Post.convertAll(jdbc.queryForList(sql));
     }
 }

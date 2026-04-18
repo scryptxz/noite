@@ -44,6 +44,11 @@ main {
   min-height: 100svh;
 }
 
+.db-posts {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 .user-id {
   display: flex;
   gap: 0.5em;

@@ -1,5 +1,7 @@
 package com.noite.noite.model;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,5 +13,13 @@ public class PostService {
 
     public void insertPost(Post post) {
         postDAO.insertPost(post);
+    }
+
+    public Post showPost(String uuid) {
+        return postDAO.showPost(uuid);
+    }
+
+    public ArrayList<Post> listPosts() {
+        return postDAO.listPosts();
     }
 }

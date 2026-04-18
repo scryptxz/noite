@@ -1,5 +1,7 @@
 package com.noite.noite.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -12,17 +14,12 @@ import com.noite.noite.model.Post;
 import com.noite.noite.model.PostService;
 
 
+
 @Controller
 public class AppController {
 
     @Autowired
     private ApplicationContext context;
-
-    @GetMapping("/")
-    public String paginaPrincipal(Model model) {
-        model.addAttribute("post", new Post());
-        return "index";
-    }
 
     @GetMapping("/user")
     public String userPage() {
@@ -33,7 +30,17 @@ public class AppController {
     public String postUser(@ModelAttribute Post post, Model model) {
         PostService cs = context.getBean(PostService.class);
         cs.insertPost(post);
+        return "redirect:/";
+    }
+
+    @GetMapping("/")
+    public String listPosts(Model model) {
+        PostService cs = context.getBean(PostService.class);
+        ArrayList<Post> posts = (ArrayList<Post>) cs.listPosts();
+        model.addAttribute("posts", posts);
+        model.addAttribute("post", new Post());
         return "index";
     }
+    
     
 }

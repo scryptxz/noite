@@ -1,4 +1,4 @@
-package com.noite.noite.controller;
+package com.litter.litter.controller;
 
 import java.util.ArrayList;
 
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.noite.noite.model.Post;
-import com.noite.noite.model.PostService;
+import com.litter.litter.model.Post;
+import com.litter.litter.model.PostService;
 
 
 

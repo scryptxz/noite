@@ -1,4 +1,4 @@
-package com.noite.noite.model;
+package com.litter.litter.model;
 
 import java.util.ArrayList;
 

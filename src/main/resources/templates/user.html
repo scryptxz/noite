@@ -6,9 +6,26 @@
     <script th:src="@{js/index.js}"></script>
   </head>
   <body>
-    <a th:href="@{/}" class="home-page-btn">Página inicial</a>
-
     <main>
+      <ul class="left-menu">
+        <li id="litter-logo">
+          <a th:href="@{/}">
+            <img th:src="@{img/litter-logo.png}" />
+          </a>
+        </li>
+        <li>
+          <a th:href="@{/}">
+            <img th:src="@{img/icons/home.svg}" />
+            <span>Página inicial</span>
+          </a>
+        </li>
+        <li>
+          <a th:href="@{/user}">
+            <img th:src="@{img/icons/user.svg}" />
+            <span>Perfil</span>
+          </a>
+        </li>
+      </ul>
       <div class="posts-container">
         <header>
           <img th:src="@{img/icon.jpg}" id="user-icon-header" alt="" />
@@ -57,9 +74,7 @@
               <a>Doglas</a>
               <span class="user-handle">@littlecat</span>
             </div>
-            <p>
-              quero dormir
-            </p>
+            <p>quero dormir</p>
             <div class="interactions">
               <img th:src="@{img/icons/star.svg}" class="interaction-icon" />
               <img th:src="@{img/icons/repost.svg}" class="interaction-icon" />
@@ -68,6 +83,17 @@
           </div>
         </div>
       </div>
+      <ul>
+        <li id="trends-title">O que está acontecendo</li>
+        <li>MIANDO ÀS 3AM</li>
+        <li>Ração acabou</li>
+        <li>#CulpaDoHumano</li>
+        <li>PASSEIO AGORA</li>
+        <li>Latido estranho</li>
+        <li>#PETISCO_JÁ</li>
+        <li>#DormirNoTeclado</li>
+        <li>Veterinário não</li>
+      </ul>
     </main>
   </body>
 </html>

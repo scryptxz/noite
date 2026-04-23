@@ -10,9 +10,9 @@ import org.springframework.stereotype.Repository;
 
 import jakarta.annotation.PostConstruct;
 
-@Repository 
+@Repository
 public class PostDAO {
-    
+
     @Autowired
     DataSource dataSource;
 
@@ -20,17 +20,22 @@ public class PostDAO {
 
     @PostConstruct
     private void initialize() {
-        jdbc =  new JdbcTemplate(dataSource);
+        jdbc = new JdbcTemplate(dataSource);
     }
 
     public void insertPost(Post post) {
-        String sql = "INSERT INTO POST(content)" +
-                     " VALUES (?)";
+        String sql = "INSERT INTO POST(content)"
+                + " VALUES (?)";
         Object[] obj = new Object[1];
 
         obj[0] = post.getContent();
 
         jdbc.update(sql, obj);
+    }
+
+    public void deletePost(String uuid) {
+        String sql = "DELETE FROM POST WHERE ID=?::uuid";
+        jdbc.update(sql, uuid);
     }
 
     public Post showPost(String uuid) {

@@ -7,12 +7,32 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   </head>
   <body>
-    <a th:href="@{/}" class="home-page-btn">Página inicial</a>
     <main>
+       <ul class="left-menu">
+        <li id="litter-logo">
+          <a th:href="@{/}">
+            <img th:src="@{img/litter-logo.png}" />
+          </a>
+        </li>
+        <li>
+          <a th:href="@{/}">
+            <img th:src="@{img/icons/home.svg}" />
+            <span>Página inicial</span>
+          </a>
+        </li>
+        <li>
+          <a th:href="@{/user}">
+            <img th:src="@{img/icons/user.svg}" />
+            <span>Perfil</span>
+          </a>
+        </li>
+      </ul>
       <div class="posts-container">
-        <form action="#" th:action="@{/}" method="post" th:object="${post}">
+        <form action="#" th:action="@{/post}" method="post" th:object="${post}">
           <div class="icon-textarea">
-            <img th:src="@{img/icon.jpg}" class="user-icon-form" alt="" />
+            <a th:href="@{/user}">
+              <img th:src="@{img/icon.jpg}" class="user-icon-form" alt="" />
+            </a>
             <textarea
               th:field="*{content}"
               placeholder="O que você está planejando hoje?"
@@ -26,8 +46,11 @@
             <div class="text-side">
               <div class="user-id">
                 <a th:href="@{/user}">Doglas</a>
-                <span class="user-handle">@littlecat</span>
+                <span class="user-handle">@thecatdoglas</span>
               </div>
+              <a th:href="@{/delete/{uuid}(uuid=${post.uuid})}">
+                <img th:src="@{/img/icons/trash.svg}" class="trash-icon" />
+              </a>
               <p th:text="${post.content}"></p>
               <div class="interactions">
                 <img th:src="@{img/icons/star.svg}" class="interaction-icon" />
@@ -47,13 +70,12 @@
           <img th:src="@{img/icon-2.jpg}" class="user-icon" alt="" />
           <div class="text-side">
             <div class="user-id">
-              <a>Oliiver</a>
+              <a>Oliver</a>
               <span class="user-handle">@xxoliverxx</span>
             </div>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores,
-              sit quis? Est totam illum temporibus consequuntur accusamus,
-              repellendus amet commodi.
+              fiquei encarando a parede por 20 minutos. tinha alguma coisa lá.
+              não vou explicar. vocês não entenderiam
             </p>
             <div class="interactions">
               <img th:src="@{img/icons/star.svg}" class="interaction-icon" />
@@ -66,12 +88,12 @@
           <img th:src="@{img/icon-3.jpg}" class="user-icon" alt="" />
           <div class="text-side">
             <div class="user-id">
-              <a>Billiie</a>
+              <a>Billie</a>
               <span class="user-handle">@thebill</span>
             </div>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis
-              ratione doloribus autem accusantium aspernatur eveniet?
+              descobri hoje que objetos caem quando empurrados. testei com 5
+              coisas diferentes. por algum motivo minha dona não gostou...
             </p>
             <div class="interactions">
               <img th:src="@{img/icons/star.svg}" class="interaction-icon" />
@@ -81,6 +103,14 @@
           </div>
         </div>
       </div>
+      <ul class="trends">
+        <li id="trends-title">O que está acontecendo</li>
+        <li>#CulpaDoHumano</li>
+        <li>PASSEIO AGORA</li>
+        <li>#PETISCO_JÁ</li>
+        <li>#DormirNoTeclado</li>
+        <li>Veterinário não</li>
+      </ul>
     </main>
   </body>
 </html>

@@ -2,14 +2,14 @@
 
 :root {
   --primary-color: #1ed760;
-  --secondary-color: #1C821F;
+  --secondary-color: #1c821f;
 }
 
 * {
   padding: 0;
   margin: 0;
   font: inherit;
-  /* border: 1px solid red; */
+  /* border: 1px solid red !important; */
 }
 
 body {
@@ -27,12 +27,22 @@ h2 {
   color: #979897;
 }
 
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 /* POSTS */
 
 main {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  align-items: start;
+  justify-content: space-evenly;
+  margin: 0 20em;
 }
 
 .posts-container {
@@ -64,10 +74,19 @@ main {
 }
 
 .single-post {
+  position: relative;
   display: flex;
   justify-content: center;
   border-bottom: 1px solid #2b2e2b;
   padding: 1em 1em;
+}
+
+.trash-icon {
+  position: absolute;
+  top: 12px;
+  right: 8px;
+  width: 18px;
+  cursor: pointer;
 }
 
 .text-side > p {
@@ -115,14 +134,14 @@ form textarea {
   outline: none;
   color: #fefffe;
   width: 100%;
-  margin: 0 .5em;
+  margin: 0 0.5em;
 }
 
 form button {
   background: transparent;
   color: #fefffe;
   border: 1px solid var(--secondary-color);
-  padding: .3em 1.5em;
+  padding: 0.3em 1.5em;
   cursor: pointer;
   border-radius: 1em;
   margin: 1em 2em;
@@ -213,4 +232,73 @@ header {
   background-color: var(--secondary-color);
   padding: 0.5em 2em;
   border-radius: 9999px;
+}
+
+/* LEFT MENU */
+
+.left-menu {
+  font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#litter-logo:nth-child(1) img {
+  width: 150px;
+  margin-top: 0.5em;
+}
+
+.left-menu li {
+  display: flex;
+  align-items: center;
+}
+
+.left-menu a {
+  width: 100%;
+  padding: 0.5em;
+}
+
+.left-menu img,
+.left-menu span {
+  vertical-align: middle;
+}
+
+.left-menu a:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 10em;
+}
+
+/* TRENDS */
+
+.trends {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  border: solid 1px rgba(255, 255, 255, 0.1);
+  padding: 1em 2em 1em 1em;
+  border-radius: 1em;
+}
+
+.trends li {
+  font-weight: bold;
+  position: relative;
+}
+
+.trends li::after {
+  content: "Assunto do momento";
+  font-weight: lighter;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: .8em;
+  position: absolute;
+  top: -18px;
+  left: 0;
+}
+
+#trends-title {
+  font-size: 1.4rem;
+  color: #1ed760;
+}
+
+#trends-title::after {
+  display: none;
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.litter.litter.model.Post;
@@ -26,8 +27,8 @@ public class AppController {
         return "user";
     }
 
-    @PostMapping("/")
-    public String postUser(@ModelAttribute Post post, Model model) {
+    @PostMapping("/post")
+    public String insertPost(@ModelAttribute Post post, Model model) {
         PostService cs = context.getBean(PostService.class);
         cs.insertPost(post);
         return "redirect:/";
@@ -40,6 +41,13 @@ public class AppController {
         model.addAttribute("posts", posts);
         model.addAttribute("post", new Post());
         return "index";
+    }
+
+    @GetMapping("/delete/{uuid}")
+    public String deletePost(@PathVariable String uuid, Model model) {
+        PostService cs = context.getBean(PostService.class);
+        cs.deletePost(uuid);
+        return "redirect:/";
     }
     
     

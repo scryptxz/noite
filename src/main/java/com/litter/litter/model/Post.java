@@ -5,30 +5,41 @@ import java.util.List;
 import java.util.Map;
 
 public class Post {
+
     private String content;
+    private String uuid;
 
-    public Post(){};
+    public Post() {
+    }
 
-    public Post(String content) {
+    ;
+
+    public Post(String content, String uuid) {
         this.content = content;
+        this.uuid = uuid;
     }
 
     public String getContent() {
         return content;
     }
 
+    public String getUuid() {
+        return uuid;
+    }
+
     public void setContent(String content) {
         this.content = content;
     }
 
-    public static Post convert(Map<String,Object> register) {
+    public static Post convert(Map<String, Object> register) {
         String content = (String) register.get("content");
-        return new Post(content);
+        String uuid = (String) register.get("id").toString();
+        return new Post(content, uuid);
     }
 
-    public static ArrayList<Post> convertAll(List<Map<String,Object>> registers) {
+    public static ArrayList<Post> convertAll(List<Map<String, Object>> registers) {
         ArrayList<Post> aux = new ArrayList<>();
-        for(Map<String,Object> register : registers) {
+        for (Map<String, Object> register : registers) {
             aux.add(convert(register));
         }
         return aux;

@@ -41,8 +41,8 @@ a {
 main {
   display: flex;
   align-items: start;
-  justify-content: space-evenly;
-  margin: 0 20em;
+  justify-content: center;
+  /* margin: 0 20em; */
 }
 
 .posts-container {
@@ -250,6 +250,7 @@ header {
 .left-menu li {
   display: flex;
   align-items: center;
+  word-break: keep-all;
 }
 
 .left-menu a {

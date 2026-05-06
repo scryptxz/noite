@@ -15,6 +15,10 @@ public class PostService {
         postDAO.insertPost(post);
     }
 
+    public void insertReplyPost(Post post, String post_uuid) {
+        postDAO.insertReplyPost(post, post_uuid);
+    }
+
     public void deletePost(String uuid) {
         postDAO.deletePost(uuid);
     }
@@ -25,6 +29,10 @@ public class PostService {
 
     public ArrayList<Post> listPosts() {
         return postDAO.listPosts();
+    }
+    
+    public ArrayList<Post> listReplyPosts(String uuid) {
+        return postDAO.listReplyPosts(uuid);
     }
 
     public ArrayList<Post> listUserPosts(String uuid) {

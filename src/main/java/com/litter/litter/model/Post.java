@@ -13,13 +13,14 @@ public class Post {
     private String username;
     private String handle;
     private String picture;
+    private String reply_count;
 
     public Post() {
     }
 
     ;
 
-    public Post(String content, String uuid, String user_id, String created_at, String username, String handle, String picture) {
+    public Post(String content, String uuid, String user_id, String created_at, String username, String handle, String picture, String reply_count) {
         this.content = content;
         this.uuid = uuid;
         this.user_id = user_id;
@@ -27,6 +28,7 @@ public class Post {
         this.username = username;
         this.handle = handle;
         this.picture = picture;
+        this.reply_count = reply_count;
     }
 
     public String getContent() {
@@ -57,6 +59,10 @@ public class Post {
         return handle;
     }
 
+    public String getReply_count() {
+        return reply_count;
+    }
+
     public static Post convert(Map<String, Object> register) {
         String content = (String) register.get("content");
         String uuid = register.get("uuid") != null ? register.get("uuid").toString() : null;
@@ -65,7 +71,8 @@ public class Post {
         String username = register.get("username") != null ? register.get("username").toString() : null;
         String handle = register.get("handle") != null ? register.get("handle").toString() : null;
         String picture = register.get("picture") != null ? register.get("picture").toString() : null;
-        return new Post(content, uuid, user_id, created_at, username, handle, picture);
+        String reply_count = register.get("reply_count") != null ? register.get("reply_count").toString() : null;
+        return new Post(content, uuid, user_id, created_at, username, handle, picture, reply_count);
     }
 
     public static ArrayList<Post> convertAll(List<Map<String, Object>> registers) {

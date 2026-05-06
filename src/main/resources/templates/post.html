@@ -51,18 +51,66 @@
           <img th:src="@{/img/icons/repost.svg}" class="interaction-icon" />
           <img th:src="@{/img/icons/comment.svg}" class="interaction-icon" />
         </div>
-        <form action="#" th:action="@{/post}" method="post" th:object="${post}">
+        <form
+          action="#"
+          th:action="@{/reply_post/{post_uuid}(post_uuid=${post.uuid})}"
+          method="post"
+          th:object="${reply}"
+        >
           <div class="icon-textarea">
             <a th:href="@{/{handle}(handle=${user.handle})}">
               <img th:src="${user.picture}" class="user-icon-form" alt="" />
             </a>
             <textarea
+              th:field="*{content}"
               placeholder="Mande sua reposta"
               maxlength="256"
             ></textarea>
           </div>
           <button>Responder</button>
         </form>
+        <div
+          class="single-post"
+          th:each="post : ${posts}"
+          th:onclick='|window.location.href="@{/post/{uuid}(uuid=${post.uuid})}"|'
+        >
+          <a th:href="@{/{handle}(handle=${post.handle})}">
+            <img th:src="${post.picture}" class="user-icon" alt="" />
+          </a>
+          <div class="text-side">
+            <div class="user-id">
+              <a
+                th:href="@{/{handle}(handle=${post.handle})}"
+                th:text="${post.username}"
+              ></a>
+              <span class="user-handle" th:text="'@'+${post.handle}"></span>
+            </div>
+            <a th:href="@{/delete/{uuid}(uuid=${post.uuid})}">
+              <img th:src="@{/img/icons/trash.svg}" class="trash-icon" />
+            </a>
+            <p th:text="${post.content}"></p>
+            <div class="interactions">
+              <div class="">
+                <img th:src="@{/img/icons/star.svg}" class="interaction-icon" />
+                <span>0</span>
+              </div>
+              <div class="">
+                <img
+                  th:src="@{/img/icons/repost.svg}"
+                  class="interaction-icon"
+                />
+                <span>0</span>
+              </div>
+              <div>
+                <img
+                  th:src="@{/img/icons/comment.svg}"
+                  class="interaction-icon"
+                />
+                <span th:text="${post.reply_count}"></span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <ul class="trends">
         <li id="trends-title">O que está acontecendo</li>

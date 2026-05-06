@@ -43,6 +43,13 @@ public class AppController {
         return "redirect:/";
     }
 
+    @PostMapping("/reply_post/{post_uuid}")
+    public String insertReplyPost(@ModelAttribute Post post, Model model, @PathVariable String post_uuid) {
+        PostService cs = context.getBean(PostService.class);
+        cs.insertReplyPost(post, post_uuid);
+        return "redirect:/post/" + post_uuid;
+    }
+
     @GetMapping("/")
     public String listPosts(Model model) {
         PostService cs = context.getBean(PostService.class);
@@ -68,8 +75,11 @@ public class AppController {
         Post post = cs.showPost(uuid);
         UserService us = context.getBean(UserService.class);
         User user = us.showUser("jun3301");
+        ArrayList<Post> posts = (ArrayList<Post>) cs.listReplyPosts(uuid);
+        model.addAttribute("reply", new Post());
         model.addAttribute("post", post);
         model.addAttribute("user", user);
+        model.addAttribute("posts", posts);
         return "post";
     }
     

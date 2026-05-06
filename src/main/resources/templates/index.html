@@ -44,72 +44,49 @@
           <button>Postar</button>
         </form>
         <div class="db-posts">
-          <div class="single-post" th:each="post : ${posts}" th:onclick='|window.location.href="@{/post/{uuid}(uuid=${post.uuid})}"|'>
+          <div
+            class="single-post"
+            th:each="post : ${posts}"
+            th:onclick='|window.location.href="@{/post/{uuid}(uuid=${post.uuid})}"|'
+          >
             <a th:href="@{/{handle}(handle=${post.handle})}">
               <img th:src="${post.picture}" class="user-icon" alt="" />
             </a>
-              <div class="text-side">
-                <div class="user-id">
-                  <a
-                    th:href="@{/{handle}(handle=${post.handle})}"
-                    th:text="${post.username}"
-                  ></a>
-                  <span class="user-handle" th:text="'@'+${post.handle}"></span>
-                </div>
-                <a th:href="@{/delete/{uuid}(uuid=${post.uuid})}">
-                  <img th:src="@{/img/icons/trash.svg}" class="trash-icon" />
-                </a>
-                <p th:text="${post.content}"></p>
-                <div class="interactions">
+            <div class="text-side">
+              <div class="user-id">
+                <a
+                  th:href="@{/{handle}(handle=${post.handle})}"
+                  th:text="${post.username}"
+                ></a>
+                <span class="user-handle" th:text="'@'+${post.handle}"></span>
+              </div>
+              <a th:href="@{/delete/{uuid}(uuid=${post.uuid})}">
+                <img th:src="@{/img/icons/trash.svg}" class="trash-icon" />
+              </a>
+              <p th:text="${post.content}"></p>
+              <div class="interactions">
+                <div class="">
                   <img
                     th:src="@{img/icons/star.svg}"
                     class="interaction-icon"
                   />
+                  <span>0</span>
+                </div>
+                <div class="">
                   <img
                     th:src="@{img/icons/repost.svg}"
                     class="interaction-icon"
                   />
+                  <span>0</span>
+                </div>
+                <div>
                   <img
                     th:src="@{img/icons/comment.svg}"
                     class="interaction-icon"
                   />
+                  <span th:text="${post.reply_count}"></span>
                 </div>
               </div>
-          </div>
-        </div>
-        <div class="single-post">
-          <img th:src="@{img/icon-2.jpg}" class="user-icon" alt="" />
-          <div class="text-side">
-            <div class="user-id">
-              <a>Oliver</a>
-              <span class="user-handle">@xxoliverxx</span>
-            </div>
-            <p>
-              fiquei encarando a parede por 20 minutos. tinha alguma coisa lá.
-              não vou explicar. vocês não entenderiam
-            </p>
-            <div class="interactions">
-              <img th:src="@{img/icons/star.svg}" class="interaction-icon" />
-              <img th:src="@{img/icons/repost.svg}" class="interaction-icon" />
-              <img th:src="@{img/icons/comment.svg}" class="interaction-icon" />
-            </div>
-          </div>
-        </div>
-        <div class="single-post">
-          <img th:src="@{img/icon-3.jpg}" class="user-icon" alt="" />
-          <div class="text-side">
-            <div class="user-id">
-              <a>Billie</a>
-              <span class="user-handle">@thebill</span>
-            </div>
-            <p>
-              descobri hoje que objetos caem quando empurrados. testei com 5
-              coisas diferentes. por algum motivo minha dona não gostou...
-            </p>
-            <div class="interactions">
-              <img th:src="@{img/icons/star.svg}" class="interaction-icon" />
-              <img th:src="@{img/icons/repost.svg}" class="interaction-icon" />
-              <img th:src="@{img/icons/comment.svg}" class="interaction-icon" />
             </div>
           </div>
         </div>

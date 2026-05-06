@@ -66,7 +66,10 @@ public class AppController {
     public String showPost(@PathVariable String uuid, Model model) {
         PostService cs = context.getBean(PostService.class);
         Post post = cs.showPost(uuid);
+        UserService us = context.getBean(UserService.class);
+        User user = us.showUser("jun3301");
         model.addAttribute("post", post);
+        model.addAttribute("user", user);
         return "post";
     }
     

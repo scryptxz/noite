@@ -44,11 +44,10 @@
           <button>Postar</button>
         </form>
         <div class="db-posts">
-          <div class="single-post" th:each="post : ${posts}">
+          <div class="single-post" th:each="post : ${posts}" th:onclick='|window.location.href="@{/post/{uuid}(uuid=${post.uuid})}"|'>
             <a th:href="@{/{handle}(handle=${post.handle})}">
               <img th:src="${post.picture}" class="user-icon" alt="" />
             </a>
-            <a th:href="@{/post/{uuid}(uuid=${post.uuid})}">SSSSSS
               <div class="text-side">
                 <div class="user-id">
                   <a
@@ -76,7 +75,6 @@
                   />
                 </div>
               </div>
-            </a>
           </div>
         </div>
         <div class="single-post">

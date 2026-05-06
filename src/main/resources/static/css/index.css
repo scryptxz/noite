@@ -68,6 +68,11 @@ main {
   border-bottom: 1px solid #2b2e2b;
   padding: 1em 1em;
   max-width: 100%;
+  cursor: pointer;
+}
+
+.single-post:hover {
+  background-color: #121612;
 }
 
 .single-post p {
@@ -119,9 +124,16 @@ main {
   margin-top: 0.5em;
 }
 
-.interactions img {
+.interaction-icon {
   width: 18px;
   cursor: pointer;
+}
+
+.interactions-single-post {
+  display: flex;
+  margin-top: 0.5em;
+  gap: 0 4em;
+  padding-left: 2em;
 }
 
 /* FORM */
@@ -309,6 +321,19 @@ header {
 #trends-title {
   font-size: 1.4rem;
   color: #1ed760;
+}
+
+.post-back {
+  display: flex;
+  align-items: center;
+  margin: 1em 0 1em 1em;
+  font-weight: bold;
+  font-size: 1.2rem;
+  gap: 0 1.5em;
+}
+
+.post-back img {
+  display: block;
 }
 
 

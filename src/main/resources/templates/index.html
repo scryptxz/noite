@@ -62,7 +62,7 @@
                 ></a>
                 <span class="user-handle" th:text="'@'+${post.handle}"></span>
               </div>
-              <a th:href="@{/delete/{uuid}(uuid=${post.uuid})}">
+              <a th:href="@{/delete/{uuid}(uuid=${post.uuid})}" th:if="${post.user_id.equals('fd6d4acf-ebab-4610-8b18-56609c49445f')}">
                 <img th:src="@{/img/icons/trash.svg}" class="trash-icon" />
               </a>
               <p th:text="${post.content}"></p>

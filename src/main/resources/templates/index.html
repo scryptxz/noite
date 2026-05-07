@@ -49,9 +49,11 @@
             th:each="post : ${posts}"
             th:onclick='|window.location.href="@{/post/{uuid}(uuid=${post.uuid})}"|'
           >
-            <a th:href="@{/{handle}(handle=${post.handle})}">
-              <img th:src="${post.picture}" class="user-icon" alt="" />
-            </a>
+            <div>
+              <a th:href="@{/{handle}(handle=${post.handle})}">
+                <img th:src="${post.picture}" class="user-icon" alt="" />
+              </a>
+            </div>
             <div class="text-side">
               <div class="user-id">
                 <a

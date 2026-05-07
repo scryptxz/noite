@@ -47,9 +47,18 @@
           </div>
         </div>
         <div class="interactions-single-post">
-          <img th:src="@{/img/icons/star.svg}" class="interaction-icon" />
-          <img th:src="@{/img/icons/repost.svg}" class="interaction-icon" />
-          <img th:src="@{/img/icons/comment.svg}" class="interaction-icon" />
+          <div class="">
+            <img th:src="@{/img/icons/star.svg}" class="interaction-icon" />
+            <span>0</span>
+          </div>
+          <div class="">
+            <img th:src="@{/img/icons/repost.svg}" class="interaction-icon" />
+            <span>0</span>
+          </div>
+          <div>
+            <img th:src="@{/img/icons/comment.svg}" class="interaction-icon" />
+            <span th:text="${post.reply_count}"></span>
+          </div>
         </div>
         <form
           action="#"

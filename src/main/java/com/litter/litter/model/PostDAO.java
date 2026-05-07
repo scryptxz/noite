@@ -52,7 +52,10 @@ public class PostDAO {
     }
 
     public Post showPost(String uuid) {
-        String sql = "SELECT POSTS.UUID, POSTS.CONTENT, USERS.HANDLE, POSTS.USER_ID, USERS.USERNAME, USERS.PICTURE, POSTS.CREATED_AT FROM POSTS JOIN USERS ON POSTS.USER_ID = USERS.ID WHERE POSTS.UUID = ?::uuid";
+        String sql = "SELECT P.UUID, P.CONTENT, U.HANDLE, P.USER_ID, U.USERNAME, U.PICTURE, P.CREATED_AT, P.REPLY_POST_ID, COUNT(R.UUID) AS REPLY_COUNT "
+                + "FROM POSTS P JOIN USERS U ON P.USER_ID = U.ID LEFT JOIN POSTS R ON R.REPLY_POST_ID = P.UUID "
+                + "WHERE P.UUID = ?::uuid "
+                + "GROUP BY (P.UUID, U.HANDLE, U.USERNAME, U.PICTURE)";
         return Post.convert(jdbc.queryForMap(sql, uuid));
     }
 
@@ -75,12 +78,12 @@ public class PostDAO {
     }
 
     public ArrayList<Post> listUserPosts(String handle) {
-        String sql = "SELECT POSTS.UUID, POSTS.CONTENT, USERS.HANDLE, USERS.USERNAME, POSTS.CREATED_AT, USERS.PICTURE, COUNT(R.UUID) AS REPLY_COUNT "
-                + "FROM POSTS "
-                + "JOIN USERS ON POSTS.USER_ID = USERS.ID "
-                + "LEFT JOIN POSTS R ON R.REPLY_POST_ID = POSTS.UUID "
-                + "WHERE USERS.HANDLE = ? AND POSTS.REPLY_POST_ID IS NULL "
-                + "GROUP BY(POSTS.UUID, POSTS.CONTENT, USERS.HANDLE, USERS.USERNAME, POSTS.CREATED_AT, USERS.PICTURE)";
+        String sql = "SELECT P.UUID, P.CONTENT, U.HANDLE, U.USERNAME, P.CREATED_AT, U.PICTURE, COUNT(R.UUID) AS REPLY_COUNT "
+                + "FROM POSTS P "
+                + "JOIN USERS U ON P.USER_ID = U.ID "
+                + "LEFT JOIN POSTS R ON R.REPLY_POST_ID = P.UUID "
+                + "WHERE U.HANDLE = ? AND P.REPLY_POST_ID IS NULL "
+                + "GROUP BY(P.UUID, P.CONTENT, U.HANDLE, U.USERNAME, P.CREATED_AT, U.PICTURE)";
         return Post.convertAll(jdbc.queryForList(sql, handle));
     }
 }

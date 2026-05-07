@@ -16,6 +16,8 @@ import com.litter.litter.model.PostService;
 import com.litter.litter.model.User;
 import com.litter.litter.model.UserService;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 
 
 @Controller
@@ -63,10 +65,11 @@ public class AppController {
     }
 
     @GetMapping("/delete/{uuid}")
-    public String deletePost(@PathVariable String uuid, Model model) {
+    public String deletePost(@PathVariable String uuid, Model model, HttpServletRequest request) {
         PostService cs = context.getBean(PostService.class);
         cs.deletePost(uuid);
-        return "redirect:/";
+        String referer = request.getHeader("Referer");
+        return "redirect:" + referer;
     }
 
     @GetMapping("/post/{uuid}")

@@ -19,6 +19,12 @@ body {
   color: #fefffe;
 }
 
+button {
+  background: none;  
+  border: none;
+  cursor: pointer;
+}
+
 p,
 h2 {
   color: #fefffe;

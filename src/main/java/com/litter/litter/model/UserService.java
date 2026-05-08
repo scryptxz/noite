@@ -17,8 +17,11 @@ public class UserService {
     @Autowired
     UserDAO userDAO;
 
-
     public User showUser(String handle) {
         return userDAO.showUser(handle);
+    }
+
+    public void insertUser(User user) {
+        userDAO.insertUser(user);
     }
 }

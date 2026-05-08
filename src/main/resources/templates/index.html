@@ -28,9 +28,12 @@
             <span>Perfil</span>
           </a>
         </li>
+        <li>
+          <a th:href="@{/signup}">Cadastrar</a>
+        </li>
       </ul>
       <div class="posts-container">
-        <form action="#" th:action="@{/post}" method="post" th:object="${post}">
+        <form th:action="@{/post}" method="post" th:object="${post}">
           <div class="icon-textarea">
             <a th:href="@{/{handle}(handle=${user.handle})}">
               <img th:src="${user.picture}" class="user-icon-form" alt="" />

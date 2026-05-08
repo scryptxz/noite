@@ -58,6 +58,19 @@ public class User {
         return username;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    public void setHandle(String handle) {
+        this.handle = handle;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
     public static User convert(Map<String, Object> register) {
         String id = register.get("id") != null ? register.get("id").toString() : null;
         String handle = register.get("handle") != null ? register.get("handle").toString() : null;

@@ -25,4 +25,16 @@ public class UserDAO {
         String sql = "SELECT * FROM USERS WHERE HANDLE = ?";
         return User.convert(jdbc.queryForMap(sql, handle));
     }
+
+    public void insertUser(User user) {
+        String sql = "INSERT INTO USERS(USERNAME, HANDLE, PASSWORD, PICTURE) VALUES(?, ?, ?, ?)";
+        Object[] obj = new Object[4];
+
+        obj[0] = user.getUsername();
+        obj[1] = user.getUsername();
+        obj[2] = user.getHandle();
+        obj[3] = user.getPicture();
+
+        jdbc.update(sql, obj);
+    }
 }
